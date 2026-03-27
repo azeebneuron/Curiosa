@@ -33,6 +33,18 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+    
+    # Apply forces with keyboard
+    keys = pygame.key.get_pressed()
+    force = 500
+    if keys[pygame.K_w]:
+        body.apply_force_at_local_point((0, -force))
+    if keys[pygame.K_s]:
+        body.apply_force_at_local_point((0, force))
+    if keys[pygame.K_a]:
+        body.apply_force_at_local_point((-force, 0))
+    if keys[pygame.K_d]:
+        body.apply_force_at_local_point((force, 0))
 
     # Step physics
     space.step(1 / 60)
