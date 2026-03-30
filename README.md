@@ -7,9 +7,9 @@
 
   ### Phase 1: Physics Foundation
   - [x] Basic pymunk space with gravity and a ball
-  - [ ] Pygame rendering loop at 60fps
-  - [ ] Keyboard-controlled forces (WASD) on the ball
-  - [ ] Static terrain — floors, walls, ramps
+  - [x] Pygame rendering loop at 60fps
+  - [x] Keyboard-controlled forces (WASD) on the ball
+  - [x] Static terrain — floors, walls, ramps
   - [ ] Procedural terrain generation with noise functions
   - [ ] Camera that follows the player/agent
 
