@@ -22,6 +22,34 @@ floor_shape.elasticity = 0.8
 floor_shape.friction = 0.5
 space.add(floor_body, floor_shape)
 
+# Left wall
+left_wall_body = pymunk.Body(body_type=pymunk.Body.STATIC)
+left_wall_shape = pymunk.Segment(left_wall_body, (0, 0), (0, 600), 5)
+left_wall_shape.elasticity = 0.8
+left_wall_shape.friction = 0.5
+space.add(left_wall_body, left_wall_shape)
+
+# Right wall
+right_wall_body = pymunk.Body(body_type=pymunk.Body.STATIC)
+right_wall_shape = pymunk.Segment(right_wall_body, (800, 0), (800, 600), 5)
+right_wall_shape.elasticity = 0.8
+right_wall_shape.friction = 0.5
+space.add(right_wall_body, right_wall_shape)
+
+# Ramp
+ramp_body = pymunk.Body(body_type=pymunk.Body.STATIC)
+ramp_shape = pymunk.Segment(ramp_body, (100, 450), (400, 350), 5)
+ramp_shape.elasticity = 0.5
+ramp_shape.friction = 0.7
+space.add(ramp_body, ramp_shape)
+
+# Ledge
+ledge_body = pymunk.Body(body_type=pymunk.Body.STATIC)
+ledge_shape = pymunk.Segment(ledge_body, (500, 400), (700, 420), 5)
+ledge_shape.elasticity = 0.5
+ledge_shape.friction = 0.7
+space.add(ledge_body, ledge_shape)
+
 # Pygame rendering
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -52,8 +80,14 @@ while running:
     # Draw
     screen.fill((20, 20, 30))
 
-    # Draw floor
-    pygame.draw.line(screen, (100, 100, 120), (0, 500), (800, 500), 5)
+    # Draw terrain
+    terrain_color = (100, 100, 120)
+    ramp_color = (140, 120, 80)
+    pygame.draw.line(screen, terrain_color, (0, 500), (800, 500), 5)      # floor
+    pygame.draw.line(screen, terrain_color, (0, 0), (0, 600), 5)          # left wall
+    pygame.draw.line(screen, terrain_color, (800, 0), (800, 600), 5)      # right wall
+    pygame.draw.line(screen, ramp_color, (100, 450), (400, 350), 5)       # ramp
+    pygame.draw.line(screen, ramp_color, (500, 400), (700, 420), 5)       # ledge
 
     # Draw ball
     pos = int(body.position.x), int(body.position.y)
